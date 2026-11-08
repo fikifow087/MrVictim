@@ -30,4 +30,9 @@ protected:
 	UPROPERTY(EditAnywhere)
 	class UCameraComponent* VAR_Kamera_untuk_Pemain;
 
+	void GerakPlayer_Horizontal(float Nilai_X_dari_GerakPlayer);
+	void GerakPlayer_Vertical(float Nilai_Y_dari_GerakPlayer);
+	void ArahKamera_Horizontal(float Nilai_X_dari_ArahKamera);
+	void ArahKamera_Vertical(float Nilai_Y_dari_ArahKamera);
+
 };

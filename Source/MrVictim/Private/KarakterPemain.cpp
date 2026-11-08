@@ -35,5 +35,31 @@ void AKarakterPemain::SetupPlayerInputComponent(UInputComponent* PlayerInputComp
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 
+	PlayerInputComponent->BindAction("Lompat", IE_Pressed, this, &ACharacter::Jump);
+	PlayerInputComponent->BindAxis("GerakPlayer_Horizontal", this, &AKarakterPemain::GerakPlayer_Horizontal);
+	PlayerInputComponent->BindAxis("GerakPlayer_Vertical", this, &AKarakterPemain::GerakPlayer_Vertical);
+	PlayerInputComponent->BindAxis("ArahKamera_Horizontal", this, &AKarakterPemain::ArahKamera_Horizontal);
+	PlayerInputComponent->BindAxis("ArahKamera_Vertical", this, &AKarakterPemain::ArahKamera_Vertical);
 }
 
+void AKarakterPemain::GerakPlayer_Horizontal(float Nilai_X_dari_GerakPlayer)
+{
+	FVector RightDirection = GetActorRightVector();
+	AddMovementInput(RightDirection, Nilai_X_dari_GerakPlayer);
+}
+
+void AKarakterPemain::GerakPlayer_Vertical(float Nilai_Y_dari_GerakPlayer)
+{
+	FVector ForwardDirection = GetActorForwardVector();
+	AddMovementInput(ForwardDirection, Nilai_Y_dari_GerakPlayer);
+}
+
+void AKarakterPemain::ArahKamera_Horizontal(float Nilai_X_dari_ArahKamera)
+{
+	AddControllerYawInput(Nilai_X_dari_ArahKamera);
+}
+
+void AKarakterPemain::ArahKamera_Vertical(float Nilai_Y_dari_ArahKamera)
+{
+	AddControllerPitchInput(Nilai_Y_dari_ArahKamera);
+}
