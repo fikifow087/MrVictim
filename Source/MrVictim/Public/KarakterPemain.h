@@ -27,12 +27,31 @@ public:
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
 protected:
+
 	UPROPERTY(EditAnywhere)
 	class UCameraComponent* VAR_Kamera_untuk_Pemain;
+
+	UPROPERTY(VisibleAnywhere)
+	class UStaticMeshComponent* VAR_MeshPedang;
+
+	UPROPERTY(EditAnywhere)
+	class UAnimSequence* VAR_AnimasiSerangan;
 
 	void GerakPlayer_Horizontal(float Nilai_X_dari_GerakPlayer);
 	void GerakPlayer_Vertical(float Nilai_Y_dari_GerakPlayer);
 	void ArahKamera_Horizontal(float Nilai_X_dari_ArahKamera);
 	void ArahKamera_Vertical(float Nilai_Y_dari_ArahKamera);
+
+	int Kerusakan;
+	void MulaiSerangan();
+	
+
+public:
+
+	UFUNCTION(BlueprintCallable)
+	void LacakGaris();
+
+	UPROPERTY(BlueprintReadWrite)
+	bool bSedangMenyerang;
 
 };
